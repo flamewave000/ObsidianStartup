@@ -1,0 +1,88 @@
+﻿<Window x:Class="Obsidian_Startup.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        ResizeMode="NoResize"
+        xmlns:local="clr-namespace:Obsidian_Startup"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        SizeToContent="WidthAndHeight"
+        Background="Transparent"
+        Title="Obsidian Startup" Height="auto" Width="auto">
+    <Window.Template>
+        <ControlTemplate TargetType="Window">
+            <Border BorderBrush="Transparent"  BorderThickness="0" CornerRadius="4" Background="Transparent" >
+                <Border BorderBrush="#423164" BorderThickness="2" CornerRadius="4" Name="MainBorder" Background="#1e1e1e" >
+                    <Grid MouseDown="DragWindow">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid x:Name="sp" Grid.Row="0" Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Row="0"
+                                HorizontalAlignment="Left"
+                                Width="auto"
+                                Height="22"
+                                Margin="10 5"
+                                Grid.Column="0"
+                                Source="pack://application:,,,/Images/obsidian-logo-text-white-purple.png" />
+                            <Button
+                                Style="{DynamicResource CloseButtonStyle}"
+                                Grid.Column="1"
+                                Margin="0"
+                                Content="✕"
+                                Width="32"
+                                Height="32"
+                                Click="CloseDialog">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="0 4 0 0"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                        <ContentPresenter Grid.Row="1"/>
+                    </Grid>
+                </Border>
+            </Border>
+        </ControlTemplate>
+    </Window.Template>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Button
+            Style="{DynamicResource OptionButtonStyle}"
+            Grid.Row="0"
+            Grid.Column="0"
+            MinWidth="150"
+            Click="ChooseVault"
+            Content="{StaticResource ChooseVaultButton}" />
+        <Button
+            Name="OpenVaultButton"
+            Style="{DynamicResource OptionButtonStyle}"
+            Grid.Row="0"
+            Grid.Column="2"
+            MinWidth="150"
+            Click="OpenVault"
+            Content="Open 'Previous Vault'"
+            IsDefault="True" >
+        </Button>
+    </Grid>
+</Window>
